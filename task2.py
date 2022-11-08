@@ -19,7 +19,6 @@ def calc_euclidean_distance_between_all_pairs():
     max_euclidean_distance = 0
     first_max_euclidean_distance_index = 0
     second_max_euclidean_distance_index = 0
-    amount_of_vector_pairs = 0
 
     while current_vector_index < len(vectorsList):
         while second_current_vector_index < len(vectorsList):
@@ -44,7 +43,6 @@ def calc_euclidean_distance_between_all_pairs():
                                                                vectorsList[second_current_vector_index])
                     first_max_euclidean_distance_index = current_vector_index
                     second_max_euclidean_distance_index = second_current_vector_index
-            amount_of_vector_pairs += 1
             second_current_vector_index += 1
         current_vector_index += 1
         second_current_vector_index = current_vector_index + 1
