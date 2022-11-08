@@ -55,7 +55,6 @@ def calc_euclidean_distance_between_all_pairs():
           + str(first_max_euclidean_distance_index) + ' and ' + str(second_max_euclidean_distance_index) + '. '
           'The value of the Euclidean distance for this pair of vectors is ' + str(max_euclidean_distance) + '.')
 
-    print(amount_of_vector_pairs)
     plt.title('Distribution of Euclidean distances')
     plt.xlabel('Euclidean distance')
     plt.ylabel('Amount of pairs')
