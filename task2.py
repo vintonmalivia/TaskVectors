@@ -2,9 +2,8 @@ import pandas
 import numpy
 import matplotlib.pyplot as plt
 
-amount_of_strings = 0
-amount_of_numbers = 0
 vectorsList = pandas.read_csv('vectors.csv', header=None).__array__(dtype=float)
+
 
 def calc_euclidean_distance_between_all_pairs():
     """This function calculates the Euclidean distance between all pairs of distinct vectors in vectors.csv."""
@@ -17,7 +16,7 @@ def calc_euclidean_distance_between_all_pairs():
     first_max_euclidean_distance_index = 0
     second_max_euclidean_distance_index = 0
     vectors_dictionary = {}
-    amount_of_vector_pairs = 0
+
     while current_vector_index < len(vectorsList):
         while second_current_vector_index < len(vectorsList):
             if ((vectorsList[current_vector_index]) != (vectorsList[second_current_vector_index])).all():
@@ -52,7 +51,6 @@ def calc_euclidean_distance_between_all_pairs():
                                                                vectorsList[second_current_vector_index])
                     first_max_euclidean_distance_index = current_vector_index
                     second_max_euclidean_distance_index = second_current_vector_index
-                amount_of_vector_pairs += 1
             second_current_vector_index += 1
         current_vector_index += 1
         second_current_vector_index = current_vector_index + 1
@@ -63,7 +61,6 @@ def calc_euclidean_distance_between_all_pairs():
           + str(first_max_euclidean_distance_index) + ' and ' + str(second_max_euclidean_distance_index) + '. '
           'The value of the Euclidean distance for this pair of vectors is ' + str(max_euclidean_distance) + '.')
 
-    print(amount_of_vector_pairs)
     plt.title('Distribution of Euclidean distances')
     plt.xlabel('Euclidean distance')
     plt.ylabel('Amount of pairs')
