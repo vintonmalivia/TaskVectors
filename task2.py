@@ -1,11 +1,9 @@
 import pandas
 import numpy
-import matplotlib
 import matplotlib.pyplot as plt
 
 amount_of_strings = 0
 amount_of_numbers = 0
-
 vectorsList = pandas.read_csv('vectors.csv', header=None).__array__(dtype=float)
 
 
@@ -19,6 +17,7 @@ def calc_euclidean_distance_between_all_pairs():
     max_euclidean_distance = 0
     first_max_euclidean_distance_index = 0
     second_max_euclidean_distance_index = 0
+    vectors_dictionary = {}
 
     while current_vector_index < len(vectorsList):
         while second_current_vector_index < len(vectorsList):
@@ -27,6 +26,17 @@ def calc_euclidean_distance_between_all_pairs():
                     'Euclidean distance for vectors under indices ' + str(current_vector_index) +
                     ' and ' + str(second_current_vector_index) + ':')
                 print(numpy.linalg.norm(vectorsList[current_vector_index] - vectorsList[second_current_vector_index]))
+
+                if round(numpy.linalg.norm(
+                        vectorsList[current_vector_index] - vectorsList[second_current_vector_index]),
+                        1) in vectors_dictionary:
+                    vectors_dictionary[round(
+                        numpy.linalg.norm(vectorsList[current_vector_index] - vectorsList[second_current_vector_index]),
+                        1)] += 1
+                else:
+                    vectors_dictionary[round(
+                        numpy.linalg.norm(vectorsList[current_vector_index] - vectorsList[second_current_vector_index]),
+                        1)] = 1
 
                 if min_euclidean_distance == 0 or min_euclidean_distance > numpy.linalg.norm(
                         vectorsList[current_vector_index]
@@ -56,6 +66,7 @@ def calc_euclidean_distance_between_all_pairs():
     plt.title('Distribution of Euclidean distances')
     plt.xlabel('Euclidean distance')
     plt.ylabel('Amount of pairs')
+    plt.bar(vectors_dictionary.keys(), vectors_dictionary.values(), width=0.05, color='g')
     plt.show()
 
 
